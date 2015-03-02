@@ -48,7 +48,9 @@ object Application extends Controller {
 
   def options(path: String) = CorsAction {
     Action { request =>
-      Ok.withHeaders(ACCESS_CONTROL_ALLOW_HEADERS -> Seq(AUTHORIZATION, CONTENT_TYPE, "Target-URL").mkString(","))
+      Ok
+        .withHeaders(ACCESS_CONTROL_ALLOW_HEADERS -> Seq(AUTHORIZATION, CONTENT_TYPE, "Target-URL").mkString(","))
+        .withHeaders(ACCESS_CONTROL_ALLOW_METHODS -> Seq("POST", "GET", "OPTIONS", "DELETE", "PATCH").mkString(","))
     }
   }
 
